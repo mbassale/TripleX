@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 void PrintIntroduction(int LevelDifficulty)
 {
@@ -10,10 +11,9 @@ void PrintIntroduction(int LevelDifficulty)
 bool PlayGame(int LevelDifficulty)
 {
     PrintIntroduction(LevelDifficulty);
-
-    const int CodeA = 4;
-    const int CodeB = 3;
-    const int CodeC = 2;
+    const int CodeA = rand() % LevelDifficulty + LevelDifficulty;
+    const int CodeB = rand() % LevelDifficulty + LevelDifficulty;
+    const int CodeC = rand() % LevelDifficulty + LevelDifficulty;
 
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
@@ -47,6 +47,9 @@ bool PlayGame(int LevelDifficulty)
 
 int main()
 {
+    // initialize random seed
+    srand(time(NULL));
+
     int LevelDifficulty = 1;
     const int MaxDifficulty = 5;
     while (LevelDifficulty <= MaxDifficulty)
